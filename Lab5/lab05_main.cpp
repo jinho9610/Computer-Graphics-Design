@@ -292,20 +292,25 @@ void keyboard_direction(int key, int x, int y)
 	switch (key)
 	{
 	case GLUT_KEY_UP:
+		pivot_y -= 5;
 		printf("key_up\n");
 		break;
 	case GLUT_KEY_DOWN:
+		pivot_y += 5;
 		printf("key_down\n");
 		break;
 	case GLUT_KEY_LEFT:
+		pivot_x -= 5;
 		printf("key_left\n");
 		break;
 	case GLUT_KEY_RIGHT:
+		pivot_x += 5;
 		printf("key_right\n");
 		break;
 	default:
 		break;
 	}
+	glutPostRedisplay();
 }
 
 void idle()
