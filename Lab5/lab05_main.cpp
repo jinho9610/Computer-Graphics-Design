@@ -1,7 +1,13 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <gl/glut.h>
 #include <stdio.h>
 #include <windows.h> // idle 함수 처리를 위한 헤더
 #include <string.h>
+#include <string>
+#include <iostream>
+
+using namespace std;
 
 void init();
 void draw();
@@ -9,10 +15,7 @@ void draw_string(void*, const char*, int, int);
 void draw_point(float, float, float);
 void draw_line(int);
 void draw_triangle();
-void draw_triangle_strip();
-void draw_triangle_fan();
 void draw_quads();
-void draw_quad_strip();
 void draw_polygon();
 void mouse(int, int, int, int);
 void motion(int, int);
@@ -21,18 +24,20 @@ void keyboard(unsigned char, int, int);
 void keyboard_direction(int, int, int);
 void main_menu_function(int);
 void sub_menu_function_shape(int);
+void sub_menu_function_matrix_order(int);
 void antialiasing();
 void alpha_blending();
+void adjusting_angle_rate(double);
 
-int type;
-int point_color; // 그려진 점의 색을 기억하는 변수
-int line_state; // 그려진 선의 타입을 기억하는 변수
-int polygon_state; // 그려진 도형의 타입을 기억하는 변수
-int shape_type;
+int shape_type; // 어떤 도형 그릴 것인지
+int matrixOrder = 1; // 매트릭스 순서 // 1이 pivot rotating을 위한 정상 순서 // 2는 반대
+
 double spin;
+double spin_increment = 0.1; // 각도가 증가하는 정도 // adjusting_angle_rate로 컨트롤
 bool isSpinning = false; // 회전 플래그
 bool antialiase_on = false; // 안티앨리어싱 플래그
 bool alpha_blending_on = false; // 알파 블렌딩 플래그
+
 
 int pivot_x = 500 / 2;
 int pivot_y = 500 / 2; // 뷰 포트의 정중앙에 초기 pivot
@@ -52,11 +57,17 @@ int main(int argc, char** argv)
 	glutAddMenuEntry("quads", 2);
 	glutAddMenuEntry("polygon", 3);
 
+	int order = glutCreateMenu(sub_menu_function_matrix_order);
+	glutAddMenuEntry("Appropriate Pivot-rotating Matrix", 1);
+	glutAddMenuEntry("Wrong Pivot-rotating Matrix", 2);
+	glutAddMenuEntry("Rotating-first Matrix", 3); // 회전 먼저 하는 이상한 변환
+
 	// 메인 메뉴
 	glutCreateMenu(main_menu_function);
 	glutAddMenuEntry("Quit", 999); // 999는 quit의 아이디
 	glutAddMenuEntry("Go!", 11); // 11은 go의 아이디
 	glutAddSubMenu("What you wanna draw?", shape);
+	glutAddSubMenu("Change Matrix Order", order);
 	glutAttachMenu(GLUT_RIGHT_BUTTON); // 우클릭 시 메뉴 나타남
 
 	/*Callback 함수 정의*/
@@ -77,7 +88,7 @@ int main(int argc, char** argv)
 /*초기화 함수*/
 void init()
 {	// 배경색 설정
-	glClearColor(0.57f, 0.5f, 0.5f, 1.0f); // dark blue
+	glClearColor(0.2f, 0.5f, 0.8f, 1.0f); // dark blue
 
 	glMatrixMode(GL_PROJECTION); // 투영 행렬로 설정
 	glLoadIdentity(); // 투영 행렬을 항등 행렬로 만듦
@@ -98,15 +109,43 @@ void draw()
 	glLoadIdentity(); // M 초기화
 
 	glColor3f(1.0f, 1.0f, 0);
-	draw_string(GLUT_BITMAP_TIMES_ROMAN_24, "Graphics are cool!!", 20, 50);
+	draw_string(GLUT_BITMAP_TIMES_ROMAN_10, "Graphics are cool!!", 250, 470);
 	glColor3f(0.0f, 0.0f, 0.0f);
-	draw_string(GLUT_BITMAP_TIMES_ROMAN_24, "12161719 Kim, Jin Ho", 250, 470);
+	draw_string(GLUT_BITMAP_TIMES_ROMAN_24, "12161719 Kim, Jin Ho", 20, 50);
 
-	/* (250,250) pivot point translation */
-	glTranslatef(pivot_x, pivot_y, 0); // x y 방향으로 250이동
-	glRotatef(spin, 0, 0, 1); // z 축 기준 60도 회전
-	glTranslatef(-250, -250, 0); // x y 방향으로 -250 이동
-	/* 역순으로(밑에서 부터) 실행됨 */
+	glColor3f(0.0f, 0.0f, 0.0f);
+	char pivot_coord[50];
+	sprintf(pivot_coord, "pivot : (%d, %d)", pivot_x, pivot_y);
+	draw_string(GLUT_BITMAP_TIMES_ROMAN_10, pivot_coord, 20, 465);
+
+	char angle[10];
+	sprintf(angle, "%lf degree", spin);
+	draw_string(GLUT_BITMAP_TIMES_ROMAN_10, angle, 20, 450);
+
+	if (matrixOrder == 1)
+	{
+		/* pivot point rotating */
+		glTranslatef(pivot_x, pivot_y, 0); // pivot 원상 복구 변환 행렬
+		glRotatef(spin, 0, 0, 1); // z 축 기준 spin만큼 회전
+		glTranslatef(-pivot_x, -pivot_y, 0); // pivot을 원점으로 이동
+		/* 역순으로(밑에서 부터) 실행됨 */
+	}
+	else if (matrixOrder == 2) // 회전 먼저하는 // 사실상 회전만 하는 이상한 변환
+	{
+		/* pivot point rotating을 실수로 구현한 (역순을 지키지 못한) 변환 */
+		glTranslatef(pivot_x, pivot_y, 0); // pivot 원상 복구 변환 행렬
+		glTranslatef(-pivot_x, -pivot_y, 0); // pivot을 원점으로 이동
+		glRotatef(spin, 0, 0, 1); // z 축 기준 spin만큼 회전
+		/* 역순으로(밑에서 부터) 실행됨 */
+	}
+	else
+	{
+		/* pivot point rotating을 실수로 구현한 (역순을 지키지 못한) 변환 */
+		glTranslatef(-pivot_x, -pivot_y, 0); // pivot을 원점으로 이동
+		glRotatef(spin, 0, 0, 1); // z 축 기준 spin만큼 회전
+		glTranslatef(pivot_x, pivot_y, 0); // pivot 원상 복구 변환 행렬
+		/* 역순으로(밑에서 부터) 실행됨 */
+	}
 
 	switch (shape_type)
 	{
@@ -165,7 +204,7 @@ void draw_line(int line_type)
 void draw_triangle()
 {
 	/*면의 색상을 노란색으로*/
-	glColor4f(1.0f, 1.0f, 0.0f, 0.25f);
+	glColor4f(1.0f, 1.0f, 0.0f, 0.5f);
 	// GL_TRIANGLE_FAN	GL_QUADS	GL_QUAD_STRIP	GL_POLYGON
 	glBegin(GL_TRIANGLES);
 	glVertex2i(250, 100);
@@ -173,28 +212,6 @@ void draw_triangle()
 	glVertex2i(150, 250);
 	glEnd();
 	/*각 vertex 색상을 rgb 각각 부여해볼것*/
-}
-
-void draw_triangle_strip()
-{
-	glColor3f(1.0f, 1.0f, 0.0f);
-	glBegin(GL_TRIANGLE_STRIP);
-	glVertex2i(50, 50);
-	glVertex2i(200, 380);
-	glVertex2i(360, 100);
-	glVertex2i(420, 270);
-	glEnd();
-}
-
-void draw_triangle_fan()
-{
-	glColor3f(1.0f, 1.0f, 0.0f);
-	glBegin(GL_TRIANGLE_FAN);
-	glVertex2i(250, 450);
-	glVertex2i(50, 50);
-	glVertex2i(400, 100);
-	glVertex2i(200, 380);
-	glEnd();
 }
 
 void draw_quads()
@@ -205,19 +222,6 @@ void draw_quads()
 	glVertex2i(400, 100);
 	glVertex2i(400, 400);
 	glVertex2i(100, 400);
-	glEnd();
-}
-
-void draw_quad_strip()
-{
-	glColor3f(1.0f, 1.0f, 0.0f);
-	glBegin(GL_QUAD_STRIP);
-	glVertex2i(100, 100);
-	glVertex2i(300, 100);
-	glVertex2i(100, 300);
-	glVertex2i(300, 300);
-	glVertex2i(150, 350);
-	glVertex2i(250, 350);
 	glEnd();
 }
 
@@ -265,47 +269,57 @@ void alpha_blending()
 	else glDisable(GL_BLEND);
 }
 
+void adjusting_angle_rate(double increment)
+{
+	spin_increment = increment;
+}
+
 void keyboard(unsigned char key, int x, int y)
 {
 	printf("You pressed %c\n", key);
-	if (key == 's') isSpinning = !isSpinning;
+	if (key == 's') isSpinning = !isSpinning; // spinning 회전 스위치
 
-	if (key == 'a')
+	if (key == 'a') // 안티앨리어싱 스위치 // 알파 블렌딩과 함께 하는 것이 좋음
 	{
 		antialiase_on = !antialiase_on;
 		antialiasing();
 		printf("%d\n", antialiase_on);
 	}
-	if (key == 'b')
+	if (key == 'b') // 알파 블렌딩 스위치
 	{
 		alpha_blending_on = !alpha_blending_on;
 		alpha_blending();
 		printf("%d\n", alpha_blending_on);
 	}
+	/* 회전 속도 증감 */
+	if (key == 'q') adjusting_angle_rate(0.1);
+	if (key == 'w') adjusting_angle_rate(0.2);
+	if (key == 'e') adjusting_angle_rate(0.3);
+	/* 역방향 회전 */
+	if (key == 'r') adjusting_angle_rate(-spin_increment); 
 
-	glutPostRedisplay();
+	glutPostRedisplay(); // 즉각 draw 호출
 }
 
 void keyboard_direction(int key, int x, int y)
 {
-	printf("You pressed %c\n", key);
 	switch (key)
 	{
 	case GLUT_KEY_UP:
-		pivot_y -= 5;
-		printf("key_up\n");
+		if (!(pivot_y - 5 < 100)) pivot_y -= 5;
+		else printf("your pivot cannot go further\n");
 		break;
 	case GLUT_KEY_DOWN:
-		pivot_y += 5;
-		printf("key_down\n");
+		if (!(pivot_y + 5 > 400)) pivot_y += 5;
+		else printf("your pivot cannot go further\n");
 		break;
 	case GLUT_KEY_LEFT:
-		pivot_x -= 5;
-		printf("key_left\n");
+		if (!(pivot_x - 5 < 100)) pivot_x -= 5;
+		else printf("your pivot cannot go further\n");
 		break;
 	case GLUT_KEY_RIGHT:
-		pivot_x += 5;
-		printf("key_right\n");
+		if (!(pivot_x + 5 > 400)) pivot_x += 5;
+		else printf("your pivot cannot go further\n");
 		break;
 	default:
 		break;
@@ -317,7 +331,7 @@ void idle()
 {
 	if (isSpinning)
 	{
-		spin = spin + 0.1;
+		spin = spin + spin_increment;
 		if (spin > 360) spin -= 360;
 		glutPostRedisplay();
 	}
@@ -336,5 +350,11 @@ void sub_menu_function_shape(int option)
 	else shape_type = 3;
 		
 	glFlush();
+	glutPostRedisplay();
+}
+
+void sub_menu_function_matrix_order(int option)
+{
+	matrixOrder = option;
 	glutPostRedisplay();
 }
