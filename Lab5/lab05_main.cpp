@@ -216,7 +216,7 @@ void draw_triangle()
 
 void draw_quads()
 {
-	glColor3f(1.0f, 1.0f, 0.0f);
+	glColor4f(1.0f, 1.0f, 0.0f, 0.5f);
 	glBegin(GL_QUADS);
 	glVertex2i(100, 100);
 	glVertex2i(400, 100);
@@ -227,7 +227,7 @@ void draw_quads()
 
 void draw_polygon()
 {
-	glColor3f(1.0f, 1.0f, 0.0f);
+	glColor4f(1.0f, 1.0f, 0.0f, 0.5f);
 	glBegin(GL_POLYGON);
 	glVertex2i(100, 100);
 	glVertex2i(300, 100);
