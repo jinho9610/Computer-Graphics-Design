@@ -133,17 +133,17 @@ void draw()
 	else if (matrixOrder == 2) // 회전 먼저하는 // 사실상 회전만 하는 이상한 변환
 	{
 		/* pivot point rotating을 실수로 구현한 (역순을 지키지 못한) 변환 */
-		glTranslatef(pivot_x, pivot_y, 0); // pivot 원상 복구 변환 행렬
-		glTranslatef(-pivot_x, -pivot_y, 0); // pivot을 원점으로 이동
+		glTranslatef(pivot_x, pivot_y, 0); // 이동 복구ㄴ
+		glTranslatef(-pivot_x, -pivot_y, 0); // 원점으로 이동
 		glRotatef(spin, 0, 0, 1); // z 축 기준 spin만큼 회전
 		/* 역순으로(밑에서 부터) 실행됨 */
 	}
 	else
 	{
 		/* pivot point rotating을 실수로 구현한 (역순을 지키지 못한) 변환 */
-		glTranslatef(-pivot_x, -pivot_y, 0); // pivot을 원점으로 이동
+		glTranslatef(-pivot_x, -pivot_y, 0); // 다시 원래의 좌표만큼 -x -y 방향 이동
 		glRotatef(spin, 0, 0, 1); // z 축 기준 spin만큼 회전
-		glTranslatef(pivot_x, pivot_y, 0); // pivot 원상 복구 변환 행렬
+		glTranslatef(pivot_x, pivot_y, 0); // pivot이 원점에서 더욱 멀어짐
 		/* 역순으로(밑에서 부터) 실행됨 */
 	}
 
@@ -295,7 +295,7 @@ void keyboard(unsigned char key, int x, int y)
 	if (key == 'q') adjusting_angle_rate(0.1);
 	if (key == 'w') adjusting_angle_rate(0.2);
 	if (key == 'e') adjusting_angle_rate(0.3);
-	/* 역방향 회전 */
+	/* 회전 방향 변경 */
 	if (key == 'r') adjusting_angle_rate(-spin_increment); 
 
 	glutPostRedisplay(); // 즉각 draw 호출
@@ -333,6 +333,7 @@ void idle()
 	{
 		spin = spin + spin_increment;
 		if (spin > 360) spin -= 360;
+		if (spin < -360) spin += 360; // 역방향 회전 시
 		glutPostRedisplay();
 	}
 }
