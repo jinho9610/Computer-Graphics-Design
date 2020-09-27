@@ -21,18 +21,18 @@ void mouse(int, int, int, int);
 void motion(int, int);
 void idle();
 void keyboard(unsigned char, int, int);
-void keyboard_direction(int, int, int);
+void keyboard_direction(int, int, int); // 방향키 입력 처리 함수
 void main_menu_function(int);
 void sub_menu_function_shape(int);
 void sub_menu_function_matrix_order(int);
 void antialiasing();
 void alpha_blending();
-void adjusting_angle_rate(double);
+void adjusting_angle_rate(double); // 각도 변화 속도 조절 함수
 
 int shape_type; // 어떤 도형 그릴 것인지
-int matrixOrder = 1; // 매트릭스 순서 // 1이 pivot rotating을 위한 정상 순서 // 2는 반대
+int matrixOrder = 1; // 매트릭스 순서 // 1이 pivot rotating을 위한 정상 순서 // 2, 3은 비정상
 
-double spin;
+double spin; // 회전 각도
 double spin_increment = 0.1; // 각도가 증가하는 정도 // adjusting_angle_rate로 컨트롤
 bool isSpinning = false; // 회전 플래그
 bool antialiase_on = false; // 안티앨리어싱 플래그
