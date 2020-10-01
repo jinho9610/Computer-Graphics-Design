@@ -296,7 +296,7 @@ void keyboard(unsigned char key, int x, int y)
 	if (key == 'w') adjusting_angle_rate(0.2);
 	if (key == 'e') adjusting_angle_rate(0.3);
 	/* 회전 방향 변경 */
-	if (key == 'r') adjusting_angle_rate(-spin_increment); 
+	if (key == 'r') adjusting_angle_rate(-spin_increment);
 
 	glutPostRedisplay(); // 즉각 draw 호출
 }
@@ -349,7 +349,7 @@ void sub_menu_function_shape(int option)
 	if (option == 1) shape_type = 1;
 	else if (option == 2) shape_type = 2;
 	else shape_type = 3;
-		
+
 	glFlush();
 	glutPostRedisplay();
 }
