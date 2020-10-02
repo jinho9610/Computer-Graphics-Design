@@ -1,0 +1,9 @@
+﻿  lab06_main.cpp
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Lab6\lab06_main.cpp(36,6): warning C4101: 'submenu1' :참조되지 않은 지역 변수입니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Lab6\lab06_main.cpp(37,6): warning C4101: 'submenu_color' :참조되지 않은 지역 변수입니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Lab6\lab06_main.cpp(38,6): warning C4101: 'submenu_figure' :참조되지 않은 지역 변수입니다.
+  코드를 생성하고 있습니다.
+  Previous IPDB not found, fall back to full compilation.
+  All 28 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  코드를 생성했습니다.
+  Lab6.vcxproj -> C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Lab6\x64\Release\Lab6.exe
