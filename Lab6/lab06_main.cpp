@@ -29,6 +29,7 @@ double phi = 45;
 double r = 13;
 double x, y, z;
 double cam_uv = 1; // camera up vector (0, cam_uv, 0)을 결정
+<<<<<<< HEAD
 bool theta_direction_isReverse = false;
 
 int main(int argc, char** argv)
@@ -37,6 +38,11 @@ int main(int argc, char** argv)
 	int submenu_color;
 	int submenu_figure;
 
+=======
+
+int main(int argc, char** argv)
+{
+>>>>>>> Jinho
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize(500, 500);
@@ -67,7 +73,11 @@ int main(int argc, char** argv)
 /*초기화 함수*/
 void init()
 {	// 배경색 설정
+<<<<<<< HEAD
 	glClearColor(0.2f, 0.5f, 0.8f, 1.0f); // dark blue
+=======
+	glClearColor(0.2f, 0.5f, 0.8f, 1.0f);
+>>>>>>> Jinho
 }
 
 void draw()
@@ -76,7 +86,11 @@ void draw()
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity(); // Local
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> Jinho
 	getEyePosition(theta, phi);
 	gluLookAt(y, z, x, 0, 0, 0, 0, cam_uv, 0);
 	cout << "r: " << r << "\tx: " << x << "\ty: " << y << "\tz: " << z
@@ -147,11 +161,17 @@ void specialKeyboard(int key, int x, int y)
 		break;
 	case GLUT_KEY_UP:
 		theta -= 5.3;
+<<<<<<< HEAD
 		theta_direction_isReverse = true;
 		break;
 	case GLUT_KEY_DOWN:
 		theta += 5.3;
 		theta_direction_isReverse = false;
+=======
+		break;
+	case GLUT_KEY_DOWN:
+		theta += 5.3;
+>>>>>>> Jinho
 		break;
 	}
 
@@ -159,7 +179,11 @@ void specialKeyboard(int key, int x, int y)
 	else if (phi < -360) phi += 360;
 	if (theta > 360) theta -= 360;
 	else if (theta < -360) theta += 360;
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> Jinho
 	glutPostRedisplay();
 }
 
