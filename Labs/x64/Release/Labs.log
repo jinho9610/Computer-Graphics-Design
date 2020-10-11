@@ -1,0 +1,8 @@
+﻿  lab08_main.cpp
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab08_main.cpp(86,12): warning C4244: '인수': 'GLdouble'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다.
+  2 of 15 functions (13.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  코드를 생성했습니다.
+  Labs.vcxproj -> C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\x64\Release\Labs.exe

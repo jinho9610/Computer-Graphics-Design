@@ -1,2 +1,0 @@
-﻿  lab06_main.cpp
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Lab6\lab06_main.cpp(4,10): fatal error C1083: 포함 파일을 열 수 없습니다. 'gl/glut.h': No such file or directory
