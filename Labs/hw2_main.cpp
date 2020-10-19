@@ -33,7 +33,7 @@ int main(int argc, char** argv)
 
 void init()
 {
-	glClearColor(0.2f, 0.5f, 0.8f, 1.0f);
+	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
