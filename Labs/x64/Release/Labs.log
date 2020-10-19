@@ -1,19 +1,19 @@
-﻿  lab09_main.cpp
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab09_main.cpp(121,52): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab09_main.cpp(122,50): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab09_main.cpp(127,52): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab09_main.cpp(128,50): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab09_main.cpp(129,53): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab09_main.cpp(168,23): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab09_main.cpp(220,27): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab09_main.cpp(223,29): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab09_main.cpp(225,30): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab09_main.cpp(228,28): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab09_main.cpp(230,28): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab09_main.cpp(233,28): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab09_main.cpp(235,29): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab09_main.cpp(238,29): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab09_main.cpp(240,30): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+﻿  lab10_main.cpp
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab10_main.cpp(116,52): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab10_main.cpp(117,50): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab10_main.cpp(122,52): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab10_main.cpp(123,50): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab10_main.cpp(124,53): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab10_main.cpp(168,23): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab10_main.cpp(220,27): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab10_main.cpp(223,29): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab10_main.cpp(225,30): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab10_main.cpp(228,28): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab10_main.cpp(230,28): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab10_main.cpp(233,28): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab10_main.cpp(235,29): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab10_main.cpp(238,29): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab10_main.cpp(240,30): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
   코드를 생성하고 있습니다.
   2 of 18 functions (11.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
