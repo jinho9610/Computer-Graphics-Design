@@ -1,6 +1,9 @@
 #include <gl/glut.h>
 #include <stdio.h>
 #include <windows.h>
+#include <iostream>
+
+using namespace std;
 
 void init();
 void resize(int, int);
@@ -91,5 +94,11 @@ void resize(int width, int height)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(45, (float)width / (float)height, 1, 50);
+	GLfloat m[16];
+	glGetFloatv(GL_PROJECTION_MATRIX, m);
+	cout << m[0] << ' ' << m[4] << ' ' << m[8] << ' ' << m[12] << endl;
+	cout << m[1] << ' ' << m[5] << ' ' << m[9] << ' ' << m[13] << endl;
+	cout << m[2] << ' ' << m[6] << ' ' << m[10] << ' ' << m[14] << endl;
+	cout << m[3] << ' ' << m[7] << ' ' << m[11] << ' ' << m[15] << endl;
 	glMatrixMode(GL_MODELVIEW);
 }

@@ -26,7 +26,7 @@ void main_menu(int);
 
 double theta = 45;
 double phi = 45;
-double r = 13;
+double r = 1;
 double x, y, z;
 double cam_uv = 1; // camera up vector (0, cam_uv, 0)¿ª ∞·¡§
 
