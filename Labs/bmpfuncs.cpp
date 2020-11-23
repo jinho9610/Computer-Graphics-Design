@@ -98,7 +98,7 @@ uchar* readImageData(const char *filename, int* width, int* height, int* channel
 
 	if (fread(header, 1, 54, file) != 54) { // If not 54 bytes read : problem
 		printf("bmpfunc.cpp : Not a correct BMP file\n");
-		return false;
+		return (uchar*)false;
 	}
 
 	if (header[0] != 'B' || header[1] != 'M') {
@@ -176,7 +176,7 @@ float* readImageDataf(const char *filename, int* width, int* height, int* channe
 
 	if (fread(header, 1, 54, file) != 54) { // If not 54 bytes read : problem
 		printf("bmpfunc.cpp : Not a correct BMP file\n");
-		return false;
+		return (float*)false;
 	}
 
 	if (header[0] != 'B' || header[1] != 'M') {

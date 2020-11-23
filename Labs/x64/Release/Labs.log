@@ -1,21 +1,19 @@
-﻿  lab12_main.cpp
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab12_main.cpp(116,85): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab12_main.cpp(117,94): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab12_main.cpp(118,95): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab12_main.cpp(119,95): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab12_main.cpp(120,87): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab12_main.cpp(122,30): warning C4838: 'double'에서 'GLfloat'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab12_main.cpp(122,30): warning C4244: '초기화 중': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab12_main.cpp(122,33): warning C4838: 'double'에서 'GLfloat'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab12_main.cpp(122,33): warning C4244: '초기화 중': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab12_main.cpp(122,36): warning C4838: 'double'에서 'GLfloat'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab12_main.cpp(122,36): warning C4244: '초기화 중': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab12_main.cpp(133,24): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab12_main.cpp(137,25): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab12_main.cpp(145,24): warning C4305: '인수': 'double'에서 'GLfloat'(으)로 잘립니다.
+﻿  lab14_main.cpp
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(52,33): warning C4244: '인수': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(52,21): warning C4244: '인수': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(108,23): warning C4244: '=': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(110,14): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(111,14): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(113,24): warning C4244: '=': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(115,34): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(116,33): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(289,18): warning C4244: '=': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(304,18): warning C4244: '=': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(404,15): warning C4244: '=': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(405,16): warning C4244: '=': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   코드를 생성하고 있습니다.
-  2 of 42 functions ( 4.8%) were compiled, the rest were copied from previous compilation.
+  2 of 16 functions (12.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
   Labs.vcxproj -> C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\x64\Release\Labs.exe
