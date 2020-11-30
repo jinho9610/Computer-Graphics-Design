@@ -79,7 +79,9 @@ void init()
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(-g_nGLWidth / 2.0f, g_nGLWidth / 2.0f, -g_nGLHeight / 2.0f, g_nGLHeight / 2.0f, -100, 100);
+	//glOrtho(-g_nGLWidth / 2.0f, g_nGLWidth / 2.0f, -g_nGLHeight / 2.0f, g_nGLHeight / 2.0f, -100, 100);
+	//gluPerspective(45, 1, 1, 500);
+
 }
 
 void draw()
@@ -88,6 +90,7 @@ void draw()
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+	gluLookAt(100, 100, 100, 0, 0, 0, 0, 1, 0);
 
 	DrawBackground();
 	DrawSphere();
@@ -161,6 +164,7 @@ void Picking(GLint x, GLint y)
 	gluPickMatrix(x, y, 0.1, 0.1, viewport);
 
 	glOrtho(-g_nGLWidth / 2.0f, g_nGLWidth / 2.0f, -g_nGLHeight / 2.0f, g_nGLHeight / 2.0f, -100, 100);
+	//gluPerspective(45, (float)g_nGLWidth / (float)g_nGLHeight, 1, 500);
 
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
@@ -406,7 +410,8 @@ void resize(int width, int height)
 	glViewport(0, 0, width, height);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(-width / 2.0f, width / 2.0f, -height / 2.0f, height / 2.0f, -100, 100);
+	//glOrtho(-width / 2.0f, width / 2.0f, -height / 2.0f, height / 2.0f, -100, 100);
+	gluPerspective(45, (float)width / (float)height, 1, 500);
 	glMatrixMode(GL_MODELVIEW);
 }
 

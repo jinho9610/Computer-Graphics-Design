@@ -1,18 +1,34 @@
-﻿  lab14_main.cpp
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(52,33): warning C4244: '인수': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(52,21): warning C4244: '인수': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(108,23): warning C4244: '=': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(110,14): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(111,14): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(113,24): warning C4244: '=': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(115,34): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(116,33): warning C4244: '인수': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(289,18): warning C4244: '=': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(304,18): warning C4244: '=': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(404,15): warning C4244: '=': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\lab14_main.cpp(405,16): warning C4244: '=': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  project_main.cpp
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\ObjParser.h(181,13): warning C4477: 'fprintf' : 서식 문자열 '%s'에 'char *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'입니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\ObjParser.h(218,31): warning C4267: 'return': 'size_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(16,26): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(49,18): warning C4244: '=': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(64,18): warning C4244: '=': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(77,15): warning C4244: '=': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(78,16): warning C4244: '=': 'int'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(103,37): warning C4244: '+=': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(104,37): warning C4244: '+=': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(105,37): warning C4244: '+=': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(121,41): warning C4244: '=': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(122,41): warning C4244: '=': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(123,41): warning C4244: '=': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(128,20): warning C4305: '+=': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(144,41): warning C4244: '=': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(145,41): warning C4244: '=': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(146,41): warning C4244: '=': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(151,20): warning C4305: '-=': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(166,13): warning C4305: '-=': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(169,13): warning C4305: '+=': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(172,15): warning C4305: '-=': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(175,15): warning C4305: '+=': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\callbackFunc.h(189,13): warning C4305: '+=': 'double'에서 'GLfloat'(으)로 잘립니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\project_main.cpp(69,33): warning C4244: '인수': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\project_main.cpp(69,21): warning C4244: '인수': 'GLfloat'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\project_main.cpp(378,28): warning C4244: '=': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\project_main.cpp(379,28): warning C4244: '=': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\jinho\OneDrive\바탕 화면\sw\C++\Computer Graphic Design\Labs\project_main.cpp(380,8): warning C4244: '=': 'double'에서 'GLfloat'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   코드를 생성하고 있습니다.
-  2 of 16 functions (12.5%) were compiled, the rest were copied from previous compilation.
+  14 of 239 functions ( 5.9%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
