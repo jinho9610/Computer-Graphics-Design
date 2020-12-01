@@ -7,6 +7,7 @@ using namespace std;
 
 void mouse(int, int, int, int);
 void motion(int, int);
+void wheel(int, int, int, int);
 void keyboard(unsigned char, int, int);
 void specialKeyboard(int, int, int);
 void idle();
@@ -72,6 +73,15 @@ void motion(int x, int y)
 	}
 }
 
+void wheel(int button, int dir, int x, int y)
+{
+	if (dir > 0) r--;
+	else r++;
+
+	glutPostRedisplay();
+
+}
+
 void resize(int width, int height)
 {
 	g_nGLWidth = width;
@@ -94,7 +104,6 @@ void keyboard(unsigned char key, int x, int y)
 	else if (key == '4') pos = 4;
 
 	else if (key == 'y') isBS = !isBS;
-	// if (isBS) PlaySound(TEXT("./sound/Heli_Flying.wav"), 0, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	else if (key == 'u') bs_increment = 1;
 	else if (key == 'i') bs_increment = 2;
 
@@ -107,54 +116,38 @@ void keyboard(unsigned char key, int x, int y)
 	}
 	else if (key == 'a')
 	{
-		//double trans1[16] = { 1, 0, 0, -Heli_Pos[0], 0,1,0,-Heli_Pos[1], 0, 0, 1,-Heli_Pos[2], 0, 0, 0, 1 };
-		//double trans3[16] = { 1, 0, 0, Heli_Pos[0], 0,1,0,Heli_Pos[1], 0, 0, 1,Heli_Pos[2], 0, 0, 0, 1 };
-		double trans2[16] = { cos(2.1 * PI / 180), 0, sin(2.1 * PI / 180), 0, 0, 1, 0, 0, -sin(2.1 * PI / 180), 0, cos(2.1 * PI / 180), 0, 0, 0, 0, 1 };
+		double trans[16] = { cos(2.1 * PI / 180), 0, sin(2.1 * PI / 180), 0, 0, 1, 0, 0, -sin(2.1 * PI / 180), 0, cos(2.1 * PI / 180), 0, 0, 0, 0, 1 };
 		double cur_dir[4] = { HeliHead_v[0], HeliHead_v[1], HeliHead_v[2], 1 };
-		//Trans1.SetValue(trans1, 4, 4);
-		Trans2.SetValue(trans2, 4, 4);
-		//Trans3.SetValue(trans3, 4, 4);
-		//Left = Trans3 * Trans2 * Trans1;
+		Trans2.SetValue(trans, 4, 4);
 		cur_direction.SetValue(cur_dir, 4, 1);
 		new_direction = Trans2 * cur_direction;
-		//float size = sqrt(pow(new_direction.GetValue(1, 1), 2) + pow(new_direction.GetValue(1, 2), 2) + pow(new_direction.GetValue(1, 3), 2));
 		HeliHead_v[0] = new_direction.GetValue(1, 1);
 		HeliHead_v[1] = new_direction.GetValue(1, 2);
 		HeliHead_v[2] = new_direction.GetValue(1, 3); // 방향 벡터 변경
 		cout << HeliHead_v[0] << " " << HeliHead_v[1] << " " << HeliHead_v[2] << endl;
-		//Heli_Pos[0] += HeliHead_v[0] * 0.05;
-		//Heli_Pos[1] += HeliHead_v[1] * 0.05;
-		//Heli_Pos[2] += HeliHead_v[2] * 0.05;
 		body_angle += 2.1;
 	}
-
 	else if (key == 'd')
 	{
-		//double trans1[16] = { 1, 0, 0, -Heli_Pos[0], 0,1,0,-Heli_Pos[1], 0, 0, 1,-Heli_Pos[2], 0, 0, 0, 1 };
-		//double trans3[16] = { 1, 0, 0, Heli_Pos[0], 0,1,0,Heli_Pos[1], 0, 0, 1,Heli_Pos[2], 0, 0, 0, 1 };
-		double trans2[16] = { cos(-2.1 * PI / 180), 0, sin(-2.1 * PI / 180), 0, 0, 1, 0, 0, -sin(-2.1 * PI / 180), 0, cos(-2.1 * PI / 180), 0, 0, 0, 0, 1 };
+		double trans[16] = { cos(-2.1 * PI / 180), 0, sin(-2.1 * PI / 180), 0, 0, 1, 0, 0, -sin(-2.1 * PI / 180), 0, cos(-2.1 * PI / 180), 0, 0, 0, 0, 1 };
 		double cur_dir[4] = { HeliHead_v[0], HeliHead_v[1], HeliHead_v[2], 1 };
-		//Trans1.SetValue(trans1, 4, 4);
-		Trans2.SetValue(trans2, 4, 4);
-		//Trans3.SetValue(trans3, 4, 4);
-		//Left = Trans3 * Trans2 * Trans1;
+		Trans2.SetValue(trans, 4, 4);
 		cur_direction.SetValue(cur_dir, 4, 1);
 		new_direction = Trans2 * cur_direction;
-		//float size = sqrt(pow(new_direction.GetValue(1, 1), 2) + pow(new_direction.GetValue(1, 2), 2) + pow(new_direction.GetValue(1, 3), 2));
 		HeliHead_v[0] = new_direction.GetValue(1, 1);
 		HeliHead_v[1] = new_direction.GetValue(1, 2);
 		HeliHead_v[2] = new_direction.GetValue(1, 3); // 방향 벡터 변경
 		cout << HeliHead_v[0] << " " << HeliHead_v[1] << " " << HeliHead_v[2] << endl;
-		//Heli_Pos[0] += HeliHead_v[0] * 0.05;
-		//Heli_Pos[1] += HeliHead_v[1] * 0.05;
-		//Heli_Pos[2] += HeliHead_v[2] * 0.05;
 		body_angle -= 2.1;
 	}
+	else if (key == 's')
+	{
+		Heli_Pos[0] += -HeliHead_v[0] * 0.3;
+		Heli_Pos[1] += -HeliHead_v[1] * 0.3;
+		Heli_Pos[2] += -HeliHead_v[2] * 0.3;
+		cout << Heli_Pos[0] << " " << Heli_Pos[1] << " " << Heli_Pos[2] << endl;
+	}
 
-	if (key == 'r') r++; // farther
-	if (key == 'c') r--; // closer
-	cout << "r:" << r << endl;
-	cout << "pos:" << pos << endl;
 	glutPostRedisplay();
 }
 
@@ -245,7 +238,7 @@ void Picking(GLint x, GLint y)
 		index += 3 + stack;
 	}
 
-	printf("hits:%d   name id: %d   zMin: %u   zMax: %u   선택된 개체: %d", hits, stack, zMin, zMax, g_nSelect);
+	printf("hits:%d   name id: %d   zMin: %u   zMax: %u   선택된 개체: %d\n", hits, stack, zMin, zMax, g_nSelect);
 }
 
 #endif

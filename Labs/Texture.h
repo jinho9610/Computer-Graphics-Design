@@ -6,13 +6,14 @@
 
 GLuint textureMonkey;
 GLuint g_nCubeTex;
+GLuint tex_cube[6];
 
 void setTextureMapping();
 void Cube_Texture(); 
 
 void setTextureMapping() {
 	int imgWidth, imgHeight, channels;
-	uchar* img = readImageData("./obj/gold.bmp", &imgWidth, &imgHeight, &channels);
+	uchar* img = readImageData("./img/FrontTex.bmp", &imgWidth, &imgHeight, &channels);
 
 	int texNum = 1;
 	glGenTextures(texNum, &textureMonkey);
@@ -24,7 +25,8 @@ void setTextureMapping() {
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	// gluBuild2DMipmaps(GL_TEXTURE_2D, 3, imgWidth, imgHeight, GL_RGB, GL_UNSIGNED_BYTE, img);
+	//glTexParameterf(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, TRUE);
+	//gluBuild2DMipmaps(GL_TEXTURE_2D, 3, imgWidth, imgHeight, GL_RGB, GL_UNSIGNED_BYTE, img);
 }
 
 void Cube_Texture()
@@ -56,5 +58,42 @@ void Cube_Texture()
 	glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_REFLECTION_MAP);
 	glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_REFLECTION_MAP);
 	glTexGeni(GL_R, GL_TEXTURE_GEN_MODE, GL_REFLECTION_MAP);
+}
+
+void TextureMapping_cube()
+{
+	glGenTextures(6, tex_cube);
+	int width = 0, height = 0, channels = 0;
+	unsigned char* data = NULL;
+	for (int i = 0; i < 6; i++)
+	{
+		glBindTexture(GL_TEXTURE_2D, tex_cube[i]);
+		switch (i)
+		{
+		case 0:
+			data = readImageData("./img/right.bmp", &width, &height, &channels);
+			break;
+		case 1:
+			data = readImageData("./img/right.bmp", &width, &height, &channels);
+			break;
+		case 2:
+			data = readImageData("./img/bottom.bmp", &width, &height, &channels);
+			break;
+		case 3:
+			data = readImageData("./img/TexImage3.bmp", &width, &height, &channels);
+			break;
+		case 4:
+			data = readImageData("./img/front.bmp", &width, &height, &channels);
+			break;
+		case 5:
+			data = readImageData("./img/back.bmp", &width, &height, &channels);
+			break;
+		}
+		glTexImage2D(GL_TEXTURE_2D, 0, 3, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	}
 }
 #endif

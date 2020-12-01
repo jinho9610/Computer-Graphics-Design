@@ -6,6 +6,7 @@
 #include "bmpfuncs.h"
 #include "callbackFunc.h"
 #include "Texture.h"
+#include <conio.h><p>
 
 using namespace std;
 
@@ -18,6 +19,7 @@ void draw_obj(ObjParser*);
 void draw_obj_with_texture(ObjParser*);
 void draw_string(void*, const char*, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat);
 void DrawSkybox();
+void draw_cube();
 void draw_axis();
 
 void getEyePosition(double, double);
@@ -43,6 +45,7 @@ extern GLfloat tail;
 extern GLfloat blade_speed;
 extern GLfloat Heli_Pos[3];
 extern GLfloat body_angle;
+extern GLuint tex_cube[6];
 
 GLfloat Behind_pos[3] = { 0.0f, 0.0f, 0.0f };
 GLfloat Blade_pos[3] = { 0.722443f, 2.09993f, 0.00572f };
@@ -63,7 +66,7 @@ int main(int argc, char** argv)
 		(DWORD)(LPVOID)&mciOpen);
 	dwID = mciOpen.wDeviceID;
 	mciSendCommand(dwID, MCI_PLAY, MCI_DGV_PLAY_REPEAT, (DWORD)(LPVOID)&m_mciPlayParms);*/
-
+	
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(g_nGLWidth, g_nGLHeight);
@@ -76,6 +79,7 @@ int main(int argc, char** argv)
 	glutDisplayFunc(draw);
 	glutMouseFunc(mouse); // 마우스 클릭 이벤트 처리
 	glutMotionFunc(motion); // "클릭된 상태"에서 마우스 움직임이 있을 때 호출되는 것으로 보임
+	glutMouseWheelFunc(wheel);
 	glutKeyboardFunc(keyboard);
 	glutSpecialFunc(specialKeyboard);
 	glutReshapeFunc(resize);
@@ -97,10 +101,11 @@ void init()
 	setting_light();
 	Cube_Texture();
 	setTextureMapping();
+	TextureMapping_cube();
 	monkey = new ObjParser("monkey.obj");
-	Blades = new ObjParser("./obj/Blade2.obj");
+	Blades = new ObjParser("./obj/Blade.obj");
 	Behind = new ObjParser("./obj/Behind2.obj");
-	Front = new ObjParser("./obj/Front2.obj");
+	Front = new ObjParser("./obj/Front.obj");
 	BladeAxis = new ObjParser("./obj/BladeAxis2.obj");
 	LandingBar = new ObjParser("./obj/LandingBar2.obj");
 	TailBlade = new ObjParser("./obj/TailBlade2.obj");
@@ -116,7 +121,7 @@ void draw()
 	getEyePosition(theta, phi);
 	gluLookAt(y, z, x, 0, 0, 0, 0, cam_uv, 0);
 
-	DrawSkybox();
+	//DrawSkybox();
 
 	glPushMatrix();
 	draw_axis();
@@ -138,13 +143,11 @@ void draw()
 	glLoadName(2);
 	glPushMatrix();
 	draw_obj_with_texture(BladeAxis);
-	//draw_obj(BladeAxis);
 	glPopMatrix();
 
 	glLoadName(3);
 	glPushMatrix();
 	draw_obj_with_texture(Front);
-	//draw_obj(Front);
 	glPopMatrix();
 
 	glLoadName(4);
@@ -155,13 +158,11 @@ void draw()
 	glLoadName(5);
 	glPushMatrix();
 	draw_obj_with_texture(TailBlade);
-	//draw_obj(TailBlade);
 	glPopMatrix();
 
 	glLoadName(6);
 	glPushMatrix();
 	draw_obj_with_texture(LandingBar);
-	//draw_obj(LandingBar);
 	glPopMatrix();
 
 	glFlush();
@@ -303,6 +304,71 @@ void DrawSkybox()
 	glEnd();
 
 	glEnable(GL_LIGHTING);
+}
+
+void draw_cube()
+{
+	GLfloat cube_size = 50.0f;
+	glColor3f(1.0f, 1.0f, 1.0f);
+	// left
+	glBindTexture(GL_TEXTURE_2D, tex_cube[0]);
+	glBegin(GL_QUADS);
+	glNormal3f(1, 0, 0);
+	glTexCoord2f(0, 0); glVertex3f(-cube_size, cube_size, -cube_size);
+	glTexCoord2f(1, 0); glVertex3f(-cube_size, -cube_size, -cube_size);
+	glTexCoord2f(1, 1); glVertex3f(-cube_size, -cube_size, cube_size);
+	glTexCoord2f(0, 1); glVertex3f(-cube_size, cube_size, cube_size);
+	glEnd();
+
+	// right
+	glBindTexture(GL_TEXTURE_2D, tex_cube[1]);
+	glBegin(GL_QUADS);
+	glNormal3f(-1, 0, 0);
+	glTexCoord2f(0, 0); glVertex3f(cube_size, cube_size, cube_size);
+	glTexCoord2f(1, 0); glVertex3f(cube_size, -cube_size, cube_size);
+	glTexCoord2f(1, 1); glVertex3f(cube_size, -cube_size, -cube_size);
+	glTexCoord2f(0, 1); glVertex3f(cube_size, cube_size, -cube_size);
+	glEnd();
+
+	// bottom
+	glBindTexture(GL_TEXTURE_2D, tex_cube[2]);
+	glBegin(GL_QUADS);
+	glNormal3f(0, 1, 0);
+	glTexCoord2f(0, 0); glVertex3f(-cube_size, -cube_size, -cube_size);
+	glTexCoord2f(1, 0); glVertex3f(cube_size, -cube_size, -cube_size);
+	glTexCoord2f(1, 1); glVertex3f(cube_size, -cube_size, cube_size);
+	glTexCoord2f(0, 1); glVertex3f(-cube_size, -cube_size, cube_size);
+	glEnd();
+
+	// top
+	glBindTexture(GL_TEXTURE_2D, tex_cube[3]);
+	glBegin(GL_QUADS);
+	glNormal3f(0, -1, 0);
+	glTexCoord2f(0, 0); glVertex3f(-cube_size, cube_size, cube_size);
+	glTexCoord2f(1, 0); glVertex3f(cube_size, cube_size, cube_size);
+	glTexCoord2f(1, 1); glVertex3f(cube_size, cube_size, -cube_size);
+	glTexCoord2f(0, 1); glVertex3f(-cube_size, cube_size, -cube_size);
+	glEnd();
+
+	// near
+	glBindTexture(GL_TEXTURE_2D, tex_cube[4]);
+	glBegin(GL_QUADS);
+	glNormal3f(0, 0, -1);
+	glTexCoord2f(0, 0); glVertex3f(cube_size, cube_size, cube_size);
+	glTexCoord2f(1, 0); glVertex3f(-cube_size, cube_size, cube_size);
+	glTexCoord2f(1, 1); glVertex3f(-cube_size, -cube_size, cube_size);
+	glTexCoord2f(0, 1); glVertex3f(cube_size, -cube_size, cube_size);
+	glEnd();
+
+	// far
+	glBindTexture(GL_TEXTURE_2D, tex_cube[5]);
+	glBegin(GL_QUADS);
+	glNormal3f(0, 0, 1);
+	glTexCoord2f(0, 0); glVertex3f(cube_size, cube_size, -cube_size);
+	glTexCoord2f(1, 0); glVertex3f(-cube_size, cube_size, -cube_size);
+	glTexCoord2f(1, 1); glVertex3f(-cube_size, -cube_size, -cube_size);
+	glTexCoord2f(0, 1); glVertex3f(cube_size, -cube_size, -cube_size);
+	glEnd();
 }
 
 void setting_light()

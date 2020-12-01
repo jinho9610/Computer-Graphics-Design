@@ -93,6 +93,7 @@ void draw()
 	gluLookAt(y, z, x, 0, 0, 0, 0, cam_uv, 0);
 	
 	DrawSkybox();
+	glEnable(GL_LIGHTING);
 
 	glMatrixMode(GL_TEXTURE);
 	glPushMatrix();
@@ -171,10 +172,10 @@ void Cube_Texture()
 void DrawSkybox()
 {
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glDisable(GL_LIGHTING);
+	//glDisable(GL_LIGHTING);
 	glEnable(GL_TEXTURE_CUBE_MAP);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, g_nCubeTex);
-	GLfloat g_nSkySize = 50.0f;
+	GLfloat g_nSkySize = 10.0f;
 	
 	glBegin(GL_QUADS);
 	// +x
@@ -219,7 +220,7 @@ void DrawSkybox()
 void setting_light()
 {
 	// 조명 설정
-	GLfloat light_ambient[] = { 0.1f,0.1f,0.1f,1.0f };
+	GLfloat light_ambient[] = { 1.0f,0.0f,0.0f,1.0f };
 	GLfloat light_diffuse[] = { 1.0f,1.0f,1.0f,1.0f };
 	GLfloat light_speuclar[] = { 1.0f,1.0f,1.0f,1.0f };
 	glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
