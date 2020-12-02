@@ -79,7 +79,7 @@ int main(int argc, char** argv)
 /*초기화 함수*/
 void init()
 {
-	print_manual();
+	//print_manual();
 	// 배경색 설정
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClearDepth(1.0f);

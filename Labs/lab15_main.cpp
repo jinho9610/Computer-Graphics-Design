@@ -30,8 +30,13 @@ double getRadian(double);
 void main_menu(int);
 void print_manual();
 
-double theta = 45;
-double phi = 45;
+void quiz1();
+void quiz2_1();
+void quiz2_2();
+void quiz3();
+
+double theta = 90;
+double phi = 0;
 double r = 17;
 double x = 15, y = 15, z = 15;
 double cam_uv = 1; // camera up vector (0, cam_uv, 0)을 결정
@@ -79,7 +84,7 @@ void init()
 	// 배경색 설정
 	glClearColor(0.0f, 0.0f, 1.0f, 0.0f);
 	glClearDepth(1.0f);
-	glEnable(GL_DEPTH_TEST);
+	//glEnable(GL_DEPTH_TEST);
 
 	glEnable(GL_COLOR_MATERIAL);
 	glEnable(GL_NORMALIZE);
@@ -87,9 +92,12 @@ void init()
 	// 조명 설정
 	setting_light();
 
-	DispalyListStartIndex = glGenLists(2);
+	DispalyListStartIndex = glGenLists(5);
 	MakeCheckerBoard(DispalyListStartIndex);
 	MakeSincSurface(DispalyListStartIndex + 1);
+	//quiz1();
+	//quiz2_1();
+	//quiz2_2();
 }
 
 void draw()
@@ -100,29 +108,92 @@ void draw()
 	glLoadIdentity();
 
 	gluLookAt(15, 15, 15, 0, 0, 0, 0, 1, 0);
+	/*getEyePosition(theta, phi);
+	gluLookAt(y, z, x, 0, 0, 0, 0, cam_uv, 0);*/
+	
+	glBegin(GL_POINT);
+	glVertex2d(0, 0);
+	glEnd();
 
-	GLfloat LightPosition[] = { 0,50,0,1 };
+	GLfloat LightPosition[] = { 0, 50, 0, 1 };
 	glLightfv(GL_LIGHT0, GL_POSITION, LightPosition);
+
+	//glCallList(2);
+	//glCallList(3);
+	//quiz3();
 
 	//glCallList(DispalyListStartIndex);
 
-	//for (int i = -3; i < 3; i++)
-	//{
-	//	for (int j = -3; j < 3; j++)
-	//	{
-	//		glPushMatrix();
+	for (int i = -3; i < 3; i++)
+	{
+		for (int j = -3; j < 3; j++)
+		{
+			glPushMatrix();
 
-	//		glTranslatef(10 * i, 0, 10 * j);
-	//		glCallList(DispalyListStartIndex);
+			glTranslatef(10 * i, 0, 10 * j);
+			glCallList(DispalyListStartIndex);
 
-	//		glPopMatrix();
-	//	}
-	//}
+			glPopMatrix();
+		}
+	}
 
 	glCallList(DispalyListStartIndex + 1);
 
 	glFlush();
 	glutSwapBuffers();
+}
+
+void quiz1()
+{
+	GLfloat color_vector[3] = { 0.0f, 0.0f, 0.0f };
+	glNewList(1, GL_COMPILE);
+	glColor3fv(color_vector);
+	glutWireTeapot(3);
+	glEndList();
+	color_vector[0] = color_vector[1] = color_vector[2] = 1.0f;
+}
+
+void quiz2_1()
+{
+	glNewList(2, GL_COMPILE);
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glBegin(GL_POLYGON);
+	glVertex2f(0.0, 0.0);
+	glVertex2f(1.0, 0.0);
+	glVertex2f(0.0, 1.0);
+	glEnd();
+	glTranslatef(1.5, 0.0, 0.0);
+	glEndList();
+}
+
+void quiz2_2()
+{
+	glNewList(3, GL_COMPILE);
+	glPushMatrix();
+	glPushAttrib(GL_CURRENT_BIT);
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glBegin(GL_POLYGON);
+	glVertex2f(0.0, 0.0);
+	glVertex2f(1.0, 0.0);
+	glVertex2f(0.0, 1.0);
+	glEnd();
+	glTranslatef(1.5, 0.0, 0.0);
+	glPopAttrib();
+	glPopMatrix();
+	glEndList();
+}
+
+void quiz3()
+{
+	for (int i = 0; i < 4; i++)
+		glCallList(3);
+		//glCallList(2)
+
+	glColor3f(0.0, 1.0, 0.0);
+	glBegin(GL_LINES);
+	glVertex2f(0.5, 0.0);
+	glVertex2f(5.0, 0.0);
+	glEnd();
 }
 
 void MakeCheckerBoard(GLint ListIndex)
@@ -152,14 +223,13 @@ void MakeCheckerBoard(GLint ListIndex)
 		}
 	}
 	glPopAttrib();
-	
 	glEndList();
 }
 
 void MakeSincSurface(GLint ListIndex)
 {
 	GLfloat x, z, d1, d2, d3, d4, y1, y2, y3, y4;
-	GLfloat step = 0.2, freq = 1.5, peak = 10;
+	GLfloat step = 0.2, freq = 3.0, peak = 10;
 
 	glNewList(ListIndex, GL_COMPILE);
 	glColor3f(0, 1, 0);
